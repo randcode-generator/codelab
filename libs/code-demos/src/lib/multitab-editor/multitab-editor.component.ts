@@ -63,6 +63,7 @@ export class MultitabEditorComponent
   files = [];
   openModels: MonacoModel[];
   changeSubject = new Subject();
+  oldmycode: string = '';
   private prefix = `prefix/${Math.random()}/`;
   private onChange: any;
   private editor: IStandaloneCodeEditor;
@@ -116,6 +117,7 @@ export class MultitabEditorComponent
   registerOnTouched(fn: any): void {}
 
   loadSolution(file) {
+    this.oldmycode = this.code[file];
     const model = this.getModelByFileName(file).model;
     const solution = this.solutions[file];
 
@@ -125,6 +127,22 @@ export class MultitabEditorComponent
         {
           range: model.getFullModelRange(),
           text: solution
+        }
+      ],
+      null
+    );
+  }
+
+  loadmycode(file) {
+    const model = this.getModelByFileName(file).model;
+    const mycode = this.oldmycode;
+
+    model.pushEditOperations(
+      [],
+      [
+        {
+          range: model.getFullModelRange(),
+          text: mycode
         }
       ],
       null
