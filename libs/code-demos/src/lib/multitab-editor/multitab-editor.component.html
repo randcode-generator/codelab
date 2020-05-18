@@ -33,12 +33,16 @@
     >
       Load solution
     </button>
-    <button mat-button style="cursor: pointer" (click)="loadmycode(model.path)">
-      Load my code
+    <button mat-button style="cursor: pointer" (click)="child1.undoAction()">
+      Undo
+    </button>
+    <button mat-button style="cursor: pointer" (click)="child1.redoAction()">
+      Redo
     </button>
   </div>
 
   <code-demo-editor-from-model
+    #child1
     [autoSize]="autoSize"
     [autoFolding]="enableAutoFolding"
     [model]="model.model"

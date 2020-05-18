@@ -40,6 +40,14 @@ export class EditorFromModelComponent
     private snackBar: MatSnackBar
   ) {}
 
+  undoAction() {
+    this.editor.trigger('aaaa', 'undo', 'aaaa');
+  }
+
+  redoAction() {
+    this.editor.trigger('aaaa', 'redo', 'aaaa');
+  }
+
   resize() {
     if (!this.autoSize) {
       return;

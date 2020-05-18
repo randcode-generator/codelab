@@ -133,22 +133,6 @@ export class MultitabEditorComponent
     );
   }
 
-  loadmycode(file) {
-    const model = this.getModelByFileName(file).model;
-    const mycode = this.oldmycode;
-
-    model.pushEditOperations(
-      [],
-      [
-        {
-          range: model.getFullModelRange(),
-          text: mycode
-        }
-      ],
-      null
-    );
-  }
-
   getModelByFileName(file): MonacoModel | undefined {
     if (this.models) {
       return this.models.find(({ path }) => path === file);
